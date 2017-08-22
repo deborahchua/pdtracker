@@ -1,6 +1,13 @@
 Add a new objective:
 
 <%= form_for :objective, url: objectives_path do |f| %>
+  <% if @objective.errors.any? %>
+    <div id="form_error">
+      <% @objective.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+      <% end %>
+    </div>
+  <% end %>
   <p>
     <%= f.label :title %>
     <%= f.text_field :title %>

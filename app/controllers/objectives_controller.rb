@@ -7,8 +7,11 @@ class ObjectivesController < ApplicationController
   def create
     @objective = Objective.new(objective_params)
 
-    @objective.save
-    redirect_to @objective
+    if @objective.save
+      redirect_to @objective
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -16,7 +19,7 @@ class ObjectivesController < ApplicationController
   end
 
   def new
-
+    @objective = Objective.new
   end
 
   def edit
