@@ -4,6 +4,18 @@ class ObjectivesController < ApplicationController
     @objectives = Objective.all
   end
 
+  def show
+    @objective = Objective.find(params[:id])
+  end
+
+  def new
+    @objective = Objective.new
+  end
+
+  def edit
+    @objective = Objective.find(params[:id])
+  end
+
   def create
     @objective = Objective.new(objective_params)
 
@@ -14,15 +26,14 @@ class ObjectivesController < ApplicationController
     end
   end
 
-  def show
+  def update
     @objective = Objective.find(params[:id])
-  end
 
-  def new
-    @objective = Objective.new
-  end
-
-  def edit
+    if @objective.update(objective_params)
+      redirect_to @objective
+    else
+      render 'edit'
+    end
   end
 
   def delete
