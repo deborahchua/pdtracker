@@ -1,0 +1,10 @@
+
+<p>List of current objectives</p>
+
+<% @objectives.each do |objective| %>
+  <h3><%= objective.title %></h3>
+  <p><%= objective.description %></p>
+  <p><%= objective.deadline %></p>
+<% end %>
+
+<p><%= link_to 'Add a new objective', new_objective_path %></p>
