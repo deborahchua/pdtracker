@@ -1,7 +1,6 @@
 <p>Edit objective</p>
 
 <%= form_for :objective, url: objective_path, :method => :PUT do |f| %>
-
   <% if @objective.errors.any? %>
     <div id="form_error">
       <% @objective.errors.full_messages.each do |msg| %>
@@ -27,4 +26,4 @@
 
 <% end %>
 
-<p><%= link_to 'back to index', objectives_path %></p>
+<p><%= link_to 'Cancel', objectives_path %></p>
