@@ -5,7 +5,7 @@
   <h3><%= objective.title %></h3>
   <p><%= objective.description %></p>
   <p><%= objective.deadline %></p>
-  <p><%= link_to "Edit", edit_objective_path(objective) %> | <%= link_to "View", objective_path(objective) %> | <%= link_to "Delete", objective_path(objective) %>
+  <p><%= link_to "Edit", edit_objective_path(objective) %> | <%= link_to "View", objective_path(objective) %> | <%= link_to "Delete", objective_path(objective), method: :delete, data: {confirm: 'Are you sure?'} %>
       </p>
 <% end %>
 

@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
-
+  resources :users
   resources :objectives
 
-  root 'welcome#index'
+  root 'objectives#index'
 
 end
