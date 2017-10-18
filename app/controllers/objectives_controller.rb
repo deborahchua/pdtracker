@@ -36,7 +36,11 @@ class ObjectivesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    @objective = Objective.find(params[:id])
+    @objective.destroy
+
+    redirect_to objectives_path
   end
 
   private
