@@ -1,0 +1,14 @@
+show all reviews for objective
+
+<h2>Reviews</h2>
+<% @objective.reviews.each do |review| %>
+  <p>
+    <strong>Question:</strong>
+    <%= review.question %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= review.comment %>
+  </p>
+<% end %>

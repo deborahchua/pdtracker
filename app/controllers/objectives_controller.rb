@@ -6,6 +6,7 @@ class ObjectivesController < ApplicationController
 
   def show
     @objective = Objective.find(params[:id])
+    @reviews = @objective.reviews.all
   end
 
   def new
