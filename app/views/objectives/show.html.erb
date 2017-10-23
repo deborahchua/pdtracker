@@ -10,7 +10,65 @@
 
 <p>
   <strong>Deadline</strong>
-  <%= @objective.deadline %>
+  <%= @objective.deadline.strftime("%A %d %b %Y") %>
 </p>
+
+<h2>Reviews</h2>
+<% @objective.reviews.each do |review| %>
+  <p>
+    <strong>Title:</strong>
+    <%= review.question %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= review.comment %>
+  </p>
+  <p>
+    <strong>Current confidence level:</strong>
+    <%= review.confidence_level %>
+  </p>
+  <p>
+    <strong>Review date:</strong>
+    <%= review.created_at.strftime("%A %d %b %Y") %>
+  </p>
+
+  <hr />
+
+<% end %>
+
+<h3>Add a review</h3>
+
+<%= form_for ([@objective, @objective.reviews.build]) do |f| %>
+  <p>
+    <%= f.label :question, "Title" %><br>
+    <%= f.text_field :question %>
+  </p>
+  <p>
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment %>
+  </p>
+  <p>
+    <%= f.check_box :completed %>
+    <%= f.label :completed, "I have completed this"  %>
+  </p>
+
+  <p>
+    Rate your confidence level (1-5)
+    <%= f.radio_button :confidence_level, 1 %>
+    <%= f.label :confidence_level, "Rookie" %>
+    <%= f.radio_button :confidence_level, 2 %>
+    <%= f.label :confidence_level, "Not bad" %>
+    <%= f.radio_button :confidence_level, 3 %>
+    <%= f.label :confidence_level, "Okay" %>
+    <%= f.radio_button :confidence_level, 4 %>
+    <%= f.label :confidence_level, "Good" %>
+    <%= f.radio_button :confidence_level, 5 %>
+    <%= f.label :confidence_level, "Great!" %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
 
 <p><%= link_to "Edit", edit_objective_path(@objective) %> | <%= link_to 'Back to index', objectives_path %></p>
