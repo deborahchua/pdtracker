@@ -1,0 +1,46 @@
+<p>Edit objective</p>
+
+<%= form_for :review, url: objective_review_path, :method => :PUT do |f| %>
+  <% if @objective.errors.any? %>
+    <div id="form_error">
+      <% @objective.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+      <% end %>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :question, "Title" %><br>
+    <%= f.text_field :question %>
+  </p>
+  <p>
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment %>
+  </p>
+  <p>
+    <%= f.check_box :completed %>
+    <%= f.label :completed, "I have completed this"  %>
+  </p>
+  <p>
+    Rate your confidence level (1-5)
+    <%= f.radio_button :confidence_level, 1 %>
+    <%= f.label :confidence_level, "Rookie" %>
+    <%= f.radio_button :confidence_level, 2 %>
+    <%= f.label :confidence_level, "Not bad" %>
+    <%= f.radio_button :confidence_level, 3 %>
+    <%= f.label :confidence_level, "Okay" %>
+    <%= f.radio_button :confidence_level, 4 %>
+    <%= f.label :confidence_level, "Good" %>
+    <%= f.radio_button :confidence_level, 5 %>
+    <%= f.label :confidence_level, "Great!" %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
+
+<h2>Review for "<%= @objective.title %>"</h2>
+
+
+
+<p><%= link_to "Back to objective", objective_path(@objective) %></p>
