@@ -1,17 +1,14 @@
-<p>
-  <strong>Title:</strong>
-  <%= @objective.title %>
-</p>
+<h2> <%= @objective.title %> </h2>
 
 <p>
-  <strong>Description</strong>
   <%= @objective.description %>
 </p>
 
 <p>
-  <strong>Deadline</strong>
-  <%= @objective.deadline.strftime("%A %d %b %Y") %>
+  <strong>Deadline: </strong>
+  <%= @objective.deadline.strftime("%A %d %b %Y") %> (<%= distance_of_time_in_words(@objective.deadline, DateTime.now) %> from now)
 </p>
+<hr />
 
 <h2>Reviews</h2>
 <% @objective.reviews.each do |review| %>
@@ -31,6 +28,9 @@
   <p>
     <strong>Review date:</strong>
     <%= review.created_at.strftime("%A %d %b %Y") %>
+  </p>
+  <p>
+    <%= link_to "Edit review", edit_objective_review_path(@objective, review) %> | <%= link_to "Delete review", objective_review_path(@objective), method: :delete, data: {confirm: 'Are you sure?'} %> [Curently deletes all reviews]
   </p>
 
   <hr />
