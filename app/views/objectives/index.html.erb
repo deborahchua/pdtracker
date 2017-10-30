@@ -1,6 +1,12 @@
 
 <h2>List of current objectives</h2>
 
+<p>
+  Download objectives:
+  <%= link_to "CSV", objectives_path(format: "csv") %> |
+  <%= link_to "Excel", objectives_path(format: "xlsx") %>
+</p>
+
 <% @objectives.each do |objective| %>
   <h3><%= objective.title %></h3>
   <p><%= objective.description %></p>

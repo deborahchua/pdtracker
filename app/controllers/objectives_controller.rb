@@ -2,6 +2,12 @@ class ObjectivesController < ApplicationController
 
   def index
     @objectives = Objective.all
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @objectives.to_csv }
+      format.xlsx { set_attachment_name "Objectives #{Time.now.utc.strftime('%A%d%b%Y')}.xlsx" }
+    end
   end
 
   def show
