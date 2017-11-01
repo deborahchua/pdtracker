@@ -1,0 +1,17 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Objectives") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row ["Objective", "Description", "Deadline", "Time until deadline"]
+
+  # each user is a row on your spreadsheet
+  @objectives.each do |objective|
+    sheet.add_row [objective.title, objective.description, objective.deadline, distance_of_time_in_words(objective.deadline, DateTime.now)]
+
+    objective.reviews.each do |review|
+      sheet.add_row ["Review - #{review.question} (#{review.created_at.strftime("%A %d %b %Y")})", review.comment, "Confidence level: #{review.confidence_level}"]
+    end
+    sheet.add_row %w()
+  end
+
+end
